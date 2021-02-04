@@ -81,4 +81,27 @@ public class ToDoItemsController {
 
 		return wsResponse;
 	}
+	
+	@CrossOrigin
+	@PostMapping("/deleteItem")
+	public WSResponse deleteItem(@RequestHeader String sessionToken,@RequestBody ToDoItems toDoItems) {
+
+		WSResponse wsResponse = new WSResponse();
+
+		try {
+			wsResponse.setResultSet(todoService.deleteItem(sessionToken,toDoItems));
+			wsResponse.setOperationStatus(StatusCodes.OPERATIONSUCCESSFULL);
+
+		}catch (UserNotLoggedIn e) {
+			wsResponse.setOperationStatus(StatusCodes.USERNOTLOGGEDIN);
+		} catch (Exception e) {
+			e.printStackTrace();
+			wsResponse.setOperationStatus(StatusCodes.UNKNOWNERROR);
+
+		}
+
+		return wsResponse;
+	}
+	
+	
 }

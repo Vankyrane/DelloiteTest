@@ -54,4 +54,15 @@ public class TodoService {
 		}
 	}
 
+	public Object deleteItem(String sessionToken, ToDoItems toDoItems) throws UserNotLoggedIn {
+		User logedInUser = userService.getUserFromSessionToken(sessionToken);
+		if(logedInUser.getId().equals(toDoItems.getUserId())) {
+			
+			toDoItemsDAO.deleteById(toDoItems.getId());
+			return null;
+		}else {
+			throw new UserNotLoggedIn();
+		}
+	}
+
 }
