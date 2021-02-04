@@ -13,4 +13,8 @@ public interface UserDAO extends JpaRepository<User, String>{
 	@Query(value = "Select * from user u where u.email_id=?1 AND password=?2", nativeQuery = true)
 	User getUserFromEmailAndPassword(String emailId, String password);
 
+	
+	@Query(value = "Select * from user u where u.session_token=?1", nativeQuery = true)
+	User getUserFromSessionToken(String sessionToken);
+
 }

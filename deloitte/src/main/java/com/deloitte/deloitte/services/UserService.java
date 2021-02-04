@@ -37,4 +37,16 @@ public class UserService {
 		return user;
 	}
 
+	public User getUserFromSessionToken(String sessionToken) throws UserNotLoggedIn {
+		 User loggedInUser = userDAO.getUserFromSessionToken(sessionToken);
+		 if(loggedInUser!=null) {
+			 return loggedInUser;
+		 }else {
+			 throw new UserNotLoggedIn();
+		 }
+		
+		// TODO Auto-generated method stub
+		
+	}
+
 }
