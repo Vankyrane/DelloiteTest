@@ -12,6 +12,20 @@ sourceCompatibility = '1.8'
 repositories {
 	mavenCentral()
 }
+bootWar {
+	archiveName getProjectProperty('warName')
+}
+
+task deploy (dependsOn: build){
+    doLast{
+        delete getProjectProperty('deployPath')+getProjectProperty('warName')[0,-4], getProjectProperty('deployPath')+ getProjectProperty('warName') 
+        copy {
+            from "build/libs"
+            into getProjectProperty('deployPath')
+            include getProjectProperty('warName')
+        }
+   }
+}
 
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
@@ -23,4 +37,14 @@ dependencies {
 
 test {
 	useJUnitPlatform()
+}
+
+def String getProjectProperty(String propertyName)
+{
+  String movieTitle = "null"
+  if (hasProperty(propertyName))
+  {
+     movieTitle = this.properties[propertyName]
+  }
+  return movieTitle
 }
