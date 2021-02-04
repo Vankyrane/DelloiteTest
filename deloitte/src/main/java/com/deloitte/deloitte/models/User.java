@@ -33,6 +33,8 @@ public class User {
 	@Column
 	@UpdateTimestamp
 	private LocalDateTime updatedOn;
+	
+	private String sessionToken;
 
 	public String getId() {
 		return id;
@@ -80,6 +82,14 @@ public class User {
 
 	public void setUpdatedOn(LocalDateTime updatedOn) {
 		this.updatedOn = updatedOn;
+	}
+
+	public String getSessionToken() {
+		return sessionToken;
+	}
+
+	public void setSessionToken(String sessionToken) {
+		this.sessionToken = sessionToken;
 	}
 
 	@Override

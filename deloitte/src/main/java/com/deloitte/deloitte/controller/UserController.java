@@ -7,19 +7,18 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.deloitte.deloitte.Utils.StatusCodes;
+import com.deloitte.deloitte.Utils.UserDoesNotExists;
+import com.deloitte.deloitte.Utils.UserNotLoggedIn;
 import com.deloitte.deloitte.Utils.WSResponse;
 import com.deloitte.deloitte.models.User;
 import com.deloitte.deloitte.services.UserService;
-
-
 
 @RestController
 public class UserController {
 
 	@Autowired
 	private UserService userService;
-	
-	
+
 	@CrossOrigin
 	@PostMapping("/registerUser")
 	public WSResponse registerUser(@RequestBody User user) {
@@ -28,18 +27,37 @@ public class UserController {
 
 		try {
 			wsResponse.setResultSet(userService.registerUser(user));
-			 wsResponse.setOperationStatus(StatusCodes.OPERATIONSUCCESSFULL); 
+			wsResponse.setOperationStatus(StatusCodes.OPERATIONSUCCESSFULL);
 
-		
 		} catch (Exception e) {
 			e.printStackTrace();
 			wsResponse.setOperationStatus(StatusCodes.UNKNOWNERROR);
-			
 
 		}
 
 		return wsResponse;
 	}
-	
-	
+
+	@CrossOrigin
+	@PostMapping("/loginUser")
+	public WSResponse loginUser(@RequestBody User user) {
+
+		WSResponse wsResponse = new WSResponse();
+
+		try {
+			wsResponse.setResultSet(userService.loginUser(user));
+			wsResponse.setOperationStatus(StatusCodes.OPERATIONSUCCESSFULL);
+
+		} catch (UserDoesNotExists e) {
+
+			wsResponse.setOperationStatus(StatusCodes.USERDOESNOTEXISTS);
+		} catch (Exception e) {
+			e.printStackTrace();
+			wsResponse.setOperationStatus(StatusCodes.UNKNOWNERROR);
+
+		}
+
+		return wsResponse;
+	}
+
 }
