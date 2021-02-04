@@ -38,4 +38,47 @@ public class ToDoItemsController {
 
 		return wsResponse;
 	}
+	
+	
+	@CrossOrigin
+	@PostMapping("/GetUserAllItems")
+	public WSResponse GetUserAllItems(@RequestHeader String sessionToken) {
+
+		WSResponse wsResponse = new WSResponse();
+
+		try {
+			wsResponse.setResultSet(todoService.GetUserAllItems(sessionToken));
+			wsResponse.setOperationStatus(StatusCodes.OPERATIONSUCCESSFULL);
+
+		}catch (UserNotLoggedIn e) {
+			wsResponse.setOperationStatus(StatusCodes.USERNOTLOGGEDIN);
+		} catch (Exception e) {
+			e.printStackTrace();
+			wsResponse.setOperationStatus(StatusCodes.UNKNOWNERROR);
+
+		}
+
+		return wsResponse;
+	}
+	
+	@CrossOrigin
+	@PostMapping("/editUserItem")
+	public WSResponse editUserItem(@RequestHeader String sessionToken,@RequestBody ToDoItems toDoItems) {
+
+		WSResponse wsResponse = new WSResponse();
+
+		try {
+			wsResponse.setResultSet(todoService.editUserItem(sessionToken,toDoItems));
+			wsResponse.setOperationStatus(StatusCodes.OPERATIONSUCCESSFULL);
+
+		}catch (UserNotLoggedIn e) {
+			wsResponse.setOperationStatus(StatusCodes.USERNOTLOGGEDIN);
+		} catch (Exception e) {
+			e.printStackTrace();
+			wsResponse.setOperationStatus(StatusCodes.UNKNOWNERROR);
+
+		}
+
+		return wsResponse;
+	}
 }
