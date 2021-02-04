@@ -35,9 +35,7 @@ dependencies {
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 }
 
-test {
-	useJUnitPlatform()
-}
+
 
 def String getProjectProperty(String propertyName)
 {
