@@ -30,6 +30,16 @@ export class HttpdataService {
     return throwError(errorMessage);
   }
 
+
+  public isServiceSuccesfull(data) {
+    if(data.operationStatus==1){
+      return true;
+    }else{
+      return false;
+    }
+  }
+
+
   //posting new comment for the blog post
   public registerUSer(postData) {
     return this.httpClient.post(this.BASE_URL + "registerUser", JSON.stringify(postData), this.httpOptions)
@@ -37,4 +47,13 @@ export class HttpdataService {
         catchError(this.handleError)
       )
   }
+
+  public loginUser(postData) {
+    return this.httpClient.post(this.BASE_URL + "loginUser", JSON.stringify(postData), this.httpOptions)
+      .pipe(
+        catchError(this.handleError)
+      )
+  }
+
+
 }
