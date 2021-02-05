@@ -1,0 +1,24 @@
+<h2>Register</h2>
+<form #registerForm="ngForm" autocomplete="off" (ngSubmit)="registerUSer(registerForm)">
+
+
+  <div class="container">
+    <label for="name"><b>Name</b></label>
+    <input type="text" placeholder="Enter Username" name="name" required [(ngModel)]="model.name" #name="ngModel">
+
+    <label for="Email"><b>Email</b></label>
+    <input type="email" placeholder="Enter Email" name="email" required [(ngModel)]="model.email" #email="ngModel">
+
+    <label for="psw"><b>Password</b></label>
+    <input type="password" placeholder="Enter Password" name="psw" required [(ngModel)]="model.password"
+      #password="ngModel">
+
+    <button type="submit">Register</button>
+
+  </div>
+
+  <div class="container" style="background-color:#f1f1f1">
+    <button type="button" class="cancelbtn">Cancel</button>
+    <span class="psw">Forgot <a href="#">password?</a></span>
+  </div>
+</form>
