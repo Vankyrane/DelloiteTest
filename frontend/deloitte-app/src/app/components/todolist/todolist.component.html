@@ -1,0 +1,11 @@
+<div class="list-container">
+  <div *ngFor="let item of todoItems" >
+    <div class="list-item" (click)="showHideDescription(item.id)">
+      <p>{{item.title}}</p>
+
+    </div>
+    <div class="list-data" id="{{item.id}}">
+      {{item.description}}
+    </div>
+  </div>
+</div>

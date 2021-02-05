@@ -54,6 +54,19 @@ export class HttpdataService {
         catchError(this.handleError)
       )
   }
+  public getUserTodos(sessionToken) {
+    let httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'sessionToken':sessionToken
+      })
+    }
+    // debugger;
+    return this.httpClient.post(this.BASE_URL + "GetUserAllItems", null, httpOptions)
+      .pipe(
+        catchError(this.handleError)
+      )
+  }
 
 
 }
