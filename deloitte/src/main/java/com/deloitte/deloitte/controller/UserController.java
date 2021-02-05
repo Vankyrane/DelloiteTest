@@ -8,7 +8,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.deloitte.deloitte.Utils.StatusCodes;
 import com.deloitte.deloitte.Utils.UserDoesNotExists;
-import com.deloitte.deloitte.Utils.UserNotLoggedIn;
 import com.deloitte.deloitte.Utils.WSResponse;
 import com.deloitte.deloitte.models.User;
 import com.deloitte.deloitte.services.UserService;
