@@ -12,6 +12,8 @@ import com.deloitte.deloitte.dao.UserDAO;
 import com.deloitte.deloitte.models.ToDoItems;
 import com.deloitte.deloitte.models.User;
 
+//Service class to implement business logic specific to action performed in GUI
+
 @Service
 public class TodoService {
 	
@@ -24,6 +26,7 @@ public class TodoService {
 	@Autowired
 	private UserService userService;
 
+//Create Item method to create new TODOLIST by specific user based on the session token.
 	public Object createItem(ToDoItems toDoItems, String sessionToken) throws UserNotLoggedIn {
 		User logedInUser = userService.getUserFromSessionToken(sessionToken);
 		if(logedInUser.getId().equals(toDoItems.getUserId())) {
@@ -35,7 +38,7 @@ public class TodoService {
 		}
 		
 	}
-
+//Get User Items method to fetch all the TODO task created by a specific user based on session token
 	public Object GetUserAllItems(String sessionToken) throws UserNotLoggedIn {
 		User logedInUser = userService.getUserFromSessionToken(sessionToken);
 		ArrayList<ToDoItems>items=toDoItemsDAO.findAllByUserId(logedInUser.getId());
@@ -43,6 +46,7 @@ public class TodoService {
 		return items;
 	}
 
+//Edit User Items method to edit the TODOLIST  created by a specific user based on session token
 	public Object editUserItem(String sessionToken, ToDoItems toDoItems) throws UserNotLoggedIn {
 		User logedInUser = userService.getUserFromSessionToken(sessionToken);
 		if(logedInUser.getId().equals(toDoItems.getUserId())) {
@@ -54,6 +58,7 @@ public class TodoService {
 		}
 	}
 
+//Delete User Items method to delete the TODOLIST created by a specific user based on session token
 	public Object deleteItem(String sessionToken, ToDoItems toDoItems) throws UserNotLoggedIn {
 		User logedInUser = userService.getUserFromSessionToken(sessionToken);
 		if(logedInUser.getId().equals(toDoItems.getUserId())) {
