@@ -1,3 +1,60 @@
+body {font-family: Arial, Helvetica, sans-serif;}
+
+input[type=text], input[type=password], input[type=email],textarea {
+  width: 100%;
+  padding: 12px 20px;
+  margin: 8px 0;
+  display: inline-block;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+
+
+button:hover {
+  opacity: 0.8;
+}
+
+.cancelbtn {
+  width: auto;
+  padding: 10px 18px;
+  background-color: #f44336;
+}
+
+.imgcontainer {
+  text-align: center;
+  margin: 24px 0 12px 0;
+}
+
+img.avatar {
+  width: 40%;
+  border-radius: 50%;
+}
+
+.container {
+  max-width: 500px;
+  padding: 16px;
+  margin: auto;
+}
+
+span.psw {
+  float: right;
+  padding-top: 16px;
+}
+
+/* Change styles for span and cancel button on extra small screens */
+@media screen and (max-width: 300px) {
+  span.psw {
+     display: block;
+     float: none;
+  }
+  .cancelbtn {
+     width: 100%;
+  }
+}
+h2{
+  text-align: center;
+}
+
 .list-container{
   max-width: 500px;
   margin: auto;
@@ -16,4 +73,57 @@
     border: 1px solid #f5f5dc;
     border-top: none;
     display: none;
+}
+.flexbox{
+  display: flex;
+}
+
+
+.float{
+	position:fixed;
+	width:60px;
+	height:60px;
+	bottom:40px;
+	right:40px;
+	background-color:rgb(96, 140, 206);
+	color:#FFF;
+	border-radius:50px;
+	text-align:center;
+	box-shadow: 2px 2px 3px #999;
+  cursor: pointer;
+}
+
+.my-float{
+	margin-top:22px;
+}
+.edit-button{
+  background: #aaaafb;
+  color: white;
+  padding: 7px 17px;
+  font-weight: bold;
+  border: none;
+  border-radius: 3px;
+  margin-top: 5px;
+  margin-right:5px ;
+}
+.delete-button{
+  background: #d44a62;
+  color: white;
+  padding: 7px 17px;
+  font-weight: bold;
+  border: none;
+  border-radius: 3px;
+  margin-top: 5px;
+}
+.update-create-button{
+  background: green;
+  color: white;
+  padding: 7px 17px;
+  font-weight: bold;
+  border: none;
+  border-radius: 3px;
+  margin-top: 5px;
+}
+button{
+  cursor: pointer;
 }

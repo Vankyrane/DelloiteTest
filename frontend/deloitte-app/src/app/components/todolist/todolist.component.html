@@ -1,11 +1,46 @@
+<div>
+
+  <form #createForm="ngForm" autocomplete="off" (ngSubmit)="createItem(createForm)" *ngIf="showform">
+
+    <div class="container">
+      <h3>{{formLabel}} To Do Item</h3>
+      <label for="title"><b>Title</b></label>
+      <input type="text" placeholder="Enter title" name="title" required [(ngModel)]="model.title" #title="ngModel">
+
+      <label for="description"><b>Description</b></label>
+      <textarea type="description" placeholder="Enter Description" name="description" required
+        [(ngModel)]="model.description" #description="ngModel">
+      </textarea>
+
+      <div class="flexbox">
+
+        <label for="isDone"><b>Done</b></label>
+        <input name="isDone" ng-control="options" type="radio" [value]="true" [(ngModel)]="model.isDone"><br />
+        <label for="isDone"><b>Not Done</b></label>
+        <input name="isDone" ng-control="options" type="radio" [value]="false" [(ngModel)]="model.isDone"><br />
+      </div>
+
+      <button type="submit" class="update-create-button">{{formLabel}}</button>
+      <button class="delete-button" (click)="closeForm(createForm)">Cancel</button>
+
+    </div>
+
+  </form>
+</div>
 <div class="list-container">
-  <div *ngFor="let item of todoItems" >
+  <div *ngFor="let item of todoItems">
     <div class="list-item" (click)="showHideDescription(item.id)">
       <p>{{item.title}}</p>
 
     </div>
     <div class="list-data" id="{{item.id}}">
-      {{item.description}}
+      <p>{{item.description}}</p>
+      <button (click)="editItem(item)" class="edit-button">Edit</button>
+      <button class="delete-button" (click)="deleteItem(item.id)">Delete</button>
     </div>
+
   </div>
 </div>
+<p href="#" class="float" (click)="showCreateForm()">
+  <img src="/assets/plus-icon-13062.png" alt="" style="width: 40px;padding-top: 10px;">
+</p>

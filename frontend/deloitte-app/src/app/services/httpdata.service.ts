@@ -68,5 +68,29 @@ export class HttpdataService {
       )
   }
 
+  public createItem(postData,sessionToken, APIUrl) {
+    let httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'sessionToken':sessionToken
+      })
+    }
+    return this.httpClient.post(this.BASE_URL + APIUrl, JSON.stringify(postData), httpOptions)
+      .pipe(
+        catchError(this.handleError)
+      )
+  }
 
+  public deleteItem(postData,sessionToken) {
+    let httpOptions = {
+      headers: new HttpHeaders({
+        'Content-Type': 'application/json',
+        'sessionToken':sessionToken
+      })
+    }
+    return this.httpClient.post(this.BASE_URL + "deleteItem", JSON.stringify(postData), httpOptions)
+      .pipe(
+        catchError(this.handleError)
+      )
+  }
 }
