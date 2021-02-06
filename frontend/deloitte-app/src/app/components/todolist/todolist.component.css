@@ -133,3 +133,20 @@ button{
     font-style: italic;
     font-size: 14px;
 }
+.header{
+  display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: #608cce;
+    color: white;
+    padding: 5px;
+}
+.logout{
+  color: #ba3939;
+    background: white;
+    border: none;
+    padding: 9px 15px;
+    font-weight: bold;
+    border-radius: 2px;
+    cursor: pointer;
+}

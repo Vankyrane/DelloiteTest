@@ -44,6 +44,8 @@ export class RegisterComponent implements OnInit {
         // this.loaderStatus = this.loaderserviceService.hideLoader();
       })
   }
-
+  navigateToLogin(){
+    this.router.navigate(['login']);
+  }
 
 }

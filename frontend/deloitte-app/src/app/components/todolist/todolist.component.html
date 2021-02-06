@@ -1,3 +1,13 @@
+
+<div class="header">
+  <div><h4>ToDo App</h4></div>
+  <div>
+    <span style="margin-right: 5px;">{{username}}</span>
+    <button class="logout" (click)="logout()">LOGOUT</button>
+  </div>
+</div>
+
+
 <div>
 
   <form #createForm="ngForm" autocomplete="off" (ngSubmit)="createItem(createForm)" *ngIf="showform">

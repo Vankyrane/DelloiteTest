@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { HttpdataService } from 'src/app/services/httpdata.service';
 
 @Component({
@@ -13,7 +14,9 @@ export class TodolistComponent implements OnInit {
   showform=false;
   formLabel="";
   itemId=null;
-  constructor(private httpdService: HttpdataService) { }
+  username=localStorage.getItem("name");
+  constructor(private httpdService: HttpdataService,
+    private router: Router) { }
 
   ngOnInit() {
     this.getUserTodos();
@@ -25,7 +28,7 @@ export class TodolistComponent implements OnInit {
     let sessionToken = localStorage.getItem("sessionToken");
     this.httpdService.getUserTodos(sessionToken).subscribe(
 
-      (data: any[]) => {
+      (data: any) => {
         if (this.httpdService.isServiceSuccesfull(data)) {
           this.todoItems = data.resultSet;
 
@@ -149,5 +152,11 @@ scrollToTop(){
   closeForm(form){
     this.showform=!this.showform;
     form.reset();
+  }
+
+  logout(){
+    localStorage.clear();
+    this.router.navigate(['login']);
+
   }
 }

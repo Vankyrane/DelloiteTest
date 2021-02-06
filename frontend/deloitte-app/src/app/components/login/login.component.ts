@@ -26,12 +26,13 @@ export class LoginComponent implements OnInit {
 
     this.httpdService.loginUser(postdata).subscribe(
 
-      (data: any[]) => {
+      (data:any) => {
         if (this.httpdService.isServiceSuccesfull(data)) {
           form.reset();
           localStorage.setItem("emailId",data.resultSet.emailId);
           localStorage.setItem("userId",data.resultSet.id);
           localStorage.setItem("sessionToken",data.resultSet.sessionToken);
+          localStorage.setItem("name",data.resultSet.name);
           this.router.navigate(['todolists']);
         } else {
           alert("SOMETHING WENT WRONG");
@@ -46,5 +47,8 @@ export class LoginComponent implements OnInit {
       () => {
         // this.loaderStatus = this.loaderserviceService.hideLoader();
       })
+  }
+  navigateToRegister(){
+    this.router.navigate(['register']);
   }
 }
