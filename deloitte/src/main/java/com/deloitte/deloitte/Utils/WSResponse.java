@@ -1,5 +1,6 @@
 package com.deloitte.deloitte.Utils;
 
+//Web Service Response class for returning operation status and result set for better understanding the errors while testing APIS through POSTMAN
 public class WSResponse {
 	private int operationStatus;
 	private Object resultSet;
