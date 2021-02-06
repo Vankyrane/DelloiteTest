@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { HttpdataService } from 'src/app/services/httpdata.service';
 
 @Component({
@@ -9,7 +10,8 @@ import { HttpdataService } from 'src/app/services/httpdata.service';
 export class LoginComponent implements OnInit {
 
   model: any = {};
-  constructor(private httpdService: HttpdataService) { }
+  constructor(private httpdService: HttpdataService,
+    private router: Router) { }
 
   ngOnInit() {
   }
@@ -30,6 +32,7 @@ export class LoginComponent implements OnInit {
           localStorage.setItem("emailId",data.resultSet.emailId);
           localStorage.setItem("userId",data.resultSet.id);
           localStorage.setItem("sessionToken",data.resultSet.sessionToken);
+          this.router.navigate(['todolists']);
         } else {
           alert("SOMETHING WENT WRONG");
         }

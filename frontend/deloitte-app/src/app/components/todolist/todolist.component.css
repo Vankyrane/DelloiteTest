@@ -127,3 +127,9 @@ h2{
 button{
   cursor: pointer;
 }
+.date-style{
+  text-align: right;
+    display: block;
+    font-style: italic;
+    font-size: 14px;
+}

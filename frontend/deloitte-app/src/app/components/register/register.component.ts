@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { HttpdataService } from 'src/app/services/httpdata.service';
 
 @Component({
@@ -8,7 +9,8 @@ import { HttpdataService } from 'src/app/services/httpdata.service';
 })
 export class RegisterComponent implements OnInit {
   model: any = { };
-  constructor(private httpdService: HttpdataService) { }
+  constructor(private httpdService: HttpdataService,
+    private router: Router) { }
 
   ngOnInit() {
   }
@@ -27,6 +29,7 @@ export class RegisterComponent implements OnInit {
       (data: any[]) => {
         if(this.httpdService.isServiceSuccesfull(data)){
           form.reset();
+          this.router.navigate(['login']);
         }else{
           alert("SOMETHING WENT WRONG");
         }

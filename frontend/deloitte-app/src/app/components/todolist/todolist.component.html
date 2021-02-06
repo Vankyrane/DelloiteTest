@@ -31,7 +31,7 @@
   <div *ngFor="let item of todoItems">
     <div class="list-item" (click)="showHideDescription(item.id)">
       <p>{{item.title}}</p>
-
+      <span class="date-style">Last Update : {{item.updatedOn | date:'short'}}</span>
     </div>
     <div class="list-data" id="{{item.id}}">
       <p>{{item.description}}</p>
