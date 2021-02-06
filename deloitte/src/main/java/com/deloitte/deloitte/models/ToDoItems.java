@@ -11,6 +11,8 @@ import org.hibernate.annotations.UpdateTimestamp;
 
 import com.sun.istack.NotNull;
 
+//POJO class to capture TODOLIST data in database columns.
+
 @Entity
 public class ToDoItems {
 	
@@ -36,6 +38,8 @@ public class ToDoItems {
 	@UpdateTimestamp
 	private LocalDateTime updatedOn;
 
+//Getter Setters for the TODOLIST POJO class
+	
 	public String getId() {
 		return id;
 	}

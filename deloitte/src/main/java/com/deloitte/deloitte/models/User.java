@@ -11,6 +11,8 @@ import org.hibernate.annotations.UpdateTimestamp;
 
 import com.sun.istack.NotNull;
 
+//POJO class to capture USer details in Database tables
+
 @Entity
 public class User {
 
@@ -36,6 +38,8 @@ public class User {
 	
 	private String sessionToken;
 
+//Getter Setters methods for USER POJO class.
+	
 	public String getId() {
 		return id;
 	}
