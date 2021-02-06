@@ -11,7 +11,7 @@ import com.deloitte.deloitte.dao.UserDAO;
 import com.deloitte.deloitte.models.User;
 
 
-
+//Service class to implement business logic for User functionalities
 @Service
 public class UserService {
 
@@ -26,6 +26,7 @@ public class UserService {
 		return user;
 	}
 
+//Login User method to allow user to login through Email Id and Password based on session token created while registering the user.
 	public Object loginUser(User user) throws  UserDoesNotExists {
 		user = userDAO.getUserFromEmailAndPassword(user.getEmailId(),user.getPassword());
 		if(user!=null) {
@@ -37,6 +38,7 @@ public class UserService {
 		return user;
 	}
 
+//Get User from Session token method to allow user to login through Email Id and Password based on session token created while registering the user.
 	public User getUserFromSessionToken(String sessionToken) throws UserNotLoggedIn {
 		 User loggedInUser = userDAO.getUserFromSessionToken(sessionToken);
 		 if(loggedInUser!=null) {

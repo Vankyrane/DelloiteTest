@@ -1,5 +1,7 @@
 package com.deloitte.deloitte.Utils;
 
+
+//Status code class to specify errors during testing through POSTMAN
 public class StatusCodes {
 
 	
